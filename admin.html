@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Admin — Anniversaire Shanna</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ===== HEADER ===== -->
+  <header class="admin-header">
+    <div>
+      <h1 class="admin-title">🎂 Anniversaire Shanna · Admin</h1>
+      <p class="admin-subtitle">
+        <span class="live-dot"></span>
+        Mise à jour automatique toutes les 3 secondes
+      </p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button id="btn-refresh" class="btn btn-secondary" style="padding:10px 20px; font-size:.85rem;">
+        ↻ Rafraîchir
+      </button>
+      <a href="index.html" class="btn btn-secondary" style="padding:10px 20px; font-size:.85rem; text-decoration:none;">
+        ← QCM
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ===== STATS GLOBALES ===== -->
+  <div class="admin-grid">
+
+    <div class="stat-card">
+      <div id="stat-inscrits" class="stat-number">0</div>
+      <div class="stat-label">Participants inscrits</div>
+    </div>
+
+    <div class="stat-card">
+      <div id="stat-restants" class="stat-number" style="color:var(--rose)">32</div>
+      <div class="stat-label">Invités restants</div>
+    </div>
+
+    <div class="stat-card">
+      <div id="stat-moyenne" class="stat-number">—</div>
+      <div class="stat-label">Score moyen / 10</div>
+    </div>
+
+  </div>
+
+
+  <!-- ===== BARRE DE PROGRESSION GLOBALE ===== -->
+  <div class="progress-global">
+    <div class="progress-global-label">
+      <span id="progress-label">0 / 32 invités</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-global-bar">
+      <div id="progress-global-fill" class="progress-global-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+
+  <!-- ===== ÉQUIPES ===== -->
+
+  <!-- Les vrais de vrais (8-10) -->
+  <div class="team-section">
+    <h2 class="team-section-title team-gold">
+      👑 Les vrais de vrais
+      <span id="team-count-team-gold" class="team-count-badge" style="background:rgba(212,175,55,0.15); color:var(--gold)">0</span>
+      <span style="font-size:.8rem; color:var(--text-muted); font-family:'Raleway',sans-serif; font-weight:400;">Ruban doré · 8-10 points</span>
+    </h2>
+    <div id="team-list-team-gold" class="invites-list">
+      <p class="empty-team">Aucun invité pour l'instant…</p>
+    </div>
+  </div>
+
+  <div class="gold-line" style="margin:24px 0;"></div>
+
+  <!-- Les fifty-fifty (4-7) -->
+  <div class="team-section">
+    <h2 class="team-section-title team-silver">
+      🎯 Les fifty-fifty
+      <span id="team-count-team-silver" class="team-count-badge" style="background:rgba(192,192,192,0.15); color:var(--silver)">0</span>
+      <span style="font-size:.8rem; color:var(--text-muted); font-family:'Raleway',sans-serif; font-weight:400;">Ruban argenté · 4-7 points</span>
+    </h2>
+    <div id="team-list-team-silver" class="invites-list">
+      <p class="empty-team">Aucun invité pour l'instant…</p>
+    </div>
+  </div>
+
+  <div class="gold-line" style="margin:24px 0;"></div>
+
+  <!-- Les profiteurs (0-3) -->
+  <div class="team-section">
+    <h2 class="team-section-title team-red">
+      🍾 Les profiteurs
+      <span id="team-count-team-red" class="team-count-badge" style="background:rgba(231,76,60,0.15); color:#E74C3C">0</span>
+      <span style="font-size:.8rem; color:var(--text-muted); font-family:'Raleway',sans-serif; font-weight:400;">Ruban rouge · 0-3 points</span>
+    </h2>
+    <div id="team-list-team-red" class="invites-list">
+      <p class="empty-team">Aucun invité pour l'instant…</p>
+    </div>
+  </div>
+
+
+  <!-- ===== ACTIONS ===== -->
+  <div class="admin-actions">
+    <button id="btn-recap" class="btn btn-primary">
+      Afficher le récap complet
+    </button>
+    <button id="btn-copy" class="btn btn-secondary">
+      📋 Copier le récap
+    </button>
+    <button id="btn-reset" class="btn" style="background:rgba(231,76,60,0.15); color:#E74C3C; border:1.5px solid #E74C3C;">
+      🗑 Réinitialiser
+    </button>
+  </div>
+
+  <pre id="recap-block" class="recap-block hidden"></pre>
+
+  <p id="last-update" class="last-update">—</p>
+
+  <div style="height:40px;"></div>
+
+  <script src="questions.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

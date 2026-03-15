@@ -1,0 +1,668 @@
+/* ============================================================
+   SHANNA 30 ANS - Thème festif : noir, doré, rose poudré
+   Google Fonts : Playfair Display (titres) + Raleway (corps)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Variables ---------- */
+:root {
+  --gold:        #D4AF37;
+  --gold-light:  #F0D060;
+  --gold-dark:   #A07820;
+  --silver:      #C0C0C0;
+  --red-team:    #C0392B;
+  --rose:        #C9727A;
+  --rose-light:  #F2B5BB;
+  --black:       #0D0D0D;
+  --dark:        #1A1A2E;
+  --card:        #16213E;
+  --card-light:  #1E2B4A;
+  --text:        #F5F0E8;
+  --text-muted:  #A89F94;
+  --border:      rgba(212, 175, 55, 0.25);
+  --shadow:      rgba(0, 0, 0, 0.6);
+
+  --radius:      16px;
+  --radius-sm:   8px;
+  --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(201,114,122,0.07) 0%, transparent 50%);
+}
+
+/* ---------- Typographie ---------- */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+/* ---------- Utilitaires ---------- */
+.hidden { display: none !important; }
+
+.text-gold   { color: var(--gold); }
+.text-rose   { color: var(--rose); }
+.text-muted  { color: var(--text-muted); }
+
+/* ---------- Étoiles de fond animées ---------- */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50%       { opacity: 0.8; transform: scale(1.5); }
+}
+
+/* ---------- Container principal ---------- */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ---------- Écrans (sections) ---------- */
+.screen {
+  width: 100%;
+  max-width: 680px;
+  animation: fadeIn 0.5s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: 0 20px 60px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Séparateur doré ---------- */
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 16px auto;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn:active::after { opacity: 1; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--black);
+  box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212,175,55,0.6);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+}
+.btn-secondary:hover {
+  background: rgba(212,175,55,0.1);
+  transform: translateY(-2px);
+}
+
+.btn-full { width: 100%; }
+
+/* ---------- ÉCRAN ACCUEIL ---------- */
+#screen-welcome {
+  text-align: center;
+}
+.welcome-title {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 900;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(212,175,55,0.4);
+  margin-bottom: 8px;
+}
+.welcome-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-style: italic;
+  color: var(--rose-light);
+  margin-bottom: 24px;
+}
+.welcome-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.welcome-teams {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.team-badge {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1.5px solid;
+}
+.badge-gold   { color: var(--gold);    border-color: var(--gold);    background: rgba(212,175,55,0.08); }
+.badge-silver { color: var(--silver);  border-color: var(--silver);  background: rgba(192,192,192,0.08); }
+.badge-red    { color: #E74C3C;        border-color: #E74C3C;        background: rgba(231,76,60,0.08); }
+
+/* ---------- ÉCRAN INSCRIPTION ---------- */
+#screen-register .card-title {
+  font-size: 1.8rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+input[type="text"], select {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  -webkit-appearance: none;
+}
+input[type="text"]:focus, select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+}
+input::placeholder { color: var(--text-muted); }
+select option { background: var(--card); color: var(--text); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ---------- ÉCRAN QCM ---------- */
+#screen-quiz .quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.quiz-counter {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.quiz-name {
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Barre de progression */
+.progress-bar-wrap {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--rose));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.quiz-question {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: var(--text);
+  margin-bottom: 28px;
+  line-height: 1.5;
+  min-height: 64px;
+}
+
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.choice-btn {
+  padding: 16px 14px;
+  background: var(--card-light);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+}
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.08);
+  transform: translateY(-1px);
+}
+.choice-btn.correct {
+  border-color: #27AE60;
+  background: rgba(39,174,96,0.15);
+  color: #2ECC71;
+}
+.choice-btn.wrong {
+  border-color: #E74C3C;
+  background: rgba(231,76,60,0.12);
+  color: #E74C3C;
+}
+.choice-btn:disabled { cursor: default; }
+
+/* Lettre A/B/C/D */
+.choice-letter {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(212,175,55,0.15);
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* ---------- ÉCRAN RÉSULTAT ---------- */
+#screen-result {
+  text-align: center;
+}
+.result-score-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 24px 0;
+}
+.result-score-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: rgba(212,175,55,0.08);
+  box-shadow: 0 0 40px rgba(212,175,55,0.3);
+  animation: pulse-glow 2s ease infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+  50%       { box-shadow: 0 0 60px rgba(212,175,55,0.6); }
+}
+.score-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.score-total {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.result-team-name {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+  margin: 16px 0 8px;
+}
+.team-gold   { color: var(--gold); }
+.team-silver { color: var(--silver); }
+.team-red    { color: #E74C3C; }
+
+.result-ribbon {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  margin: 12px 0 20px;
+  border: 2px solid;
+}
+.result-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+/* ---------- CONFETTIS ---------- */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall var(--duration, 3s) linear var(--delay, 0s) forwards;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg) scaleX(1); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg) scaleX(-1); opacity: 0; }
+}
+
+/* ---------- TRANSITIONS ENTRE QUESTIONS ---------- */
+.quiz-slide-out {
+  animation: slideOut 0.3s ease forwards;
+}
+.quiz-slide-in {
+  animation: slideIn 0.35s ease forwards;
+}
+@keyframes slideOut {
+  to { opacity: 0; transform: translateX(-40px); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- RESPONSIVE tablette portrait / paysage ---------- */
+@media (max-width: 600px) {
+  .card { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .choices-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) and (orientation: landscape) {
+  #screen-quiz .card { padding: 32px 40px; }
+  .choices-grid { gap: 14px; }
+}
+
+/* ============================================================
+   ADMIN STYLES (utilisés dans admin.html)
+   ============================================================ */
+
+.admin-body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(212,175,55,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(201,114,122,0.05) 0%, transparent 50%);
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.admin-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--gold);
+}
+.admin-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.live-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #2ECC71;
+  margin-right: 6px;
+  animation: blink 1.2s ease infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.progress-global {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.progress-global-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.progress-global-bar {
+  height: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.progress-global-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--rose));
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.team-section {
+  margin-bottom: 24px;
+}
+.team-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.team-count-badge {
+  font-size: 0.8rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+}
+
+.invites-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.invite-card {
+  background: var(--card-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+.invite-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.invite-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.invite-link {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.empty-team {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.recap-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: var(--text);
+  margin-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.last-update {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 8px;
+}

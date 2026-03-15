@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Anniversaire Shanna 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Fond étoilé -->
+<div class="stars"></div>
+
+<!-- Application principale -->
+<div id="app">
+
+  <!-- ===== ÉCRAN ACCUEIL ===== -->
+  <section id="screen-welcome" class="screen">
+    <div class="card" style="text-align:center; padding: 48px 36px;">
+
+      <p style="font-size:3rem; margin-bottom:8px;">🎂</p>
+
+      <h1 class="welcome-title">Shanna fête ses 30 ans !</h1>
+      <p class="welcome-subtitle">Mais la vraie question est…<br><em>tu la connais vraiment ?</em></p>
+
+      <div class="gold-line"></div>
+
+      <p class="welcome-desc">
+        Réponds à 10 questions sur Shanna et découvre à quelle équipe tu appartiens pour la soirée.
+        Sois honnête… ou pas ! 😄
+      </p>
+
+      <div class="welcome-teams">
+        <span class="team-badge badge-gold">👑 Les vrais de vrais</span>
+        <span class="team-badge badge-silver">🎯 Les fifty-fifty</span>
+        <span class="team-badge badge-red">🍾 Les profiteurs</span>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary" style="font-size:1.05rem; padding:16px 48px;">
+        C'est parti !
+      </button>
+
+      <p class="text-muted" style="margin-top:20px; font-size:0.8rem;">
+        10 questions · ~3 minutes
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===== ÉCRAN INSCRIPTION ===== -->
+  <section id="screen-register" class="screen hidden">
+    <div class="card">
+
+      <h2 class="card-title">Qui es-tu ?</h2>
+      <p class="text-muted" style="text-align:center; margin-bottom:28px; font-size:0.95rem;">
+        Enregistre-toi avant de commencer le QCM
+      </p>
+
+      <form id="form-register" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="input-prenom">Prénom *</label>
+            <input
+              type="text"
+              id="input-prenom"
+              placeholder="Ton prénom"
+              autocomplete="given-name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="input-nom">Nom *</label>
+            <input
+              type="text"
+              id="input-nom"
+              placeholder="Ton nom"
+              autocomplete="family-name"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="input-lien">Tu es…</label>
+          <select id="input-lien">
+            <option value="">Choisir…</option>
+            <option value="famille">Famille</option>
+            <option value="ami(e)">Ami(e)</option>
+            <option value="collègue">Collègue</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" style="margin-top:8px;">
+          Commencer le QCM →
+        </button>
+
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- ===== ÉCRAN QCM ===== -->
+  <section id="screen-quiz" class="screen hidden">
+    <div class="card">
+
+      <div class="quiz-header">
+        <span id="quiz-counter" class="quiz-counter">Question 1 / 10</span>
+        <span id="quiz-player-name" class="quiz-name"></span>
+      </div>
+
+      <div class="progress-bar-wrap">
+        <div id="progress-fill" class="progress-bar-fill" style="width:0%"></div>
+      </div>
+
+      <p id="quiz-question-text" class="quiz-question"></p>
+
+      <div id="choices-grid" class="choices-grid"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== ÉCRAN RÉSULTAT ===== -->
+  <section id="screen-result" class="screen hidden">
+    <div class="card" style="text-align:center;">
+
+      <p style="font-size:0.85rem; text-transform:uppercase; letter-spacing:.12em; color:var(--text-muted); margin-bottom:16px;">
+        Résultat
+      </p>
+
+      <div class="result-score-wrap">
+        <div class="result-score-circle">
+          <span id="result-score" class="score-number">0</span>
+          <span class="score-total">/ 10</span>
+        </div>
+      </div>
+
+      <div class="gold-line" style="margin:20px auto;"></div>
+
+      <p id="result-team-emoji" style="font-size:2.5rem; margin-bottom:8px;"></p>
+      <h2 id="result-team-name" class="result-team-name"></h2>
+
+      <div id="result-ribbon" class="result-ribbon"></div>
+
+      <p id="result-desc" class="result-desc"></p>
+
+      <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:28px;">
+        🎀 Récupère ton ruban à l'entrée et rejoins ton équipe !
+      </p>
+
+      <button id="btn-next-player" class="btn btn-primary btn-full">
+        Joueur suivant ✓
+      </button>
+
+    </div>
+  </section>
+
+</div><!-- /#app -->
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
