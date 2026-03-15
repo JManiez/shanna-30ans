@@ -268,45 +268,54 @@ select option { background: var(--card); color: var(--text); }
   gap: 16px;
 }
 
-/* ---------- ÉCRAN QCM ---------- */
+/* ---------- ÉCRAN QCM : fond saumon + texte sombre ---------- */
+#screen-quiz .card {
+  background: linear-gradient(160deg, #E07A5F 0%, #E9967A 50%, #F0B090 100%);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 20px 60px rgba(224,122,95,0.4);
+}
+#screen-quiz .card::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+}
+
 #screen-quiz .quiz-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
 }
-.quiz-counter {
+#screen-quiz .quiz-counter {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #2D3436;
   font-weight: 600;
   letter-spacing: 0.05em;
+  opacity: 0.85;
 }
-.quiz-name {
+#screen-quiz .quiz-name {
   font-size: 0.9rem;
-  color: var(--salmon);
+  color: #1A1A1A;
   font-weight: 700;
 }
 
-/* Barre de progression */
-.progress-bar-wrap {
+#screen-quiz .progress-bar-wrap {
   height: 4px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(26,26,26,0.2);
   border-radius: 2px;
   margin-bottom: 28px;
   overflow: hidden;
 }
-.progress-bar-fill {
+#screen-quiz .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--salmon), var(--sage));
+  background: linear-gradient(90deg, #1A1A1A, #2D3436);
   border-radius: 2px;
   transition: width 0.4s ease;
 }
 
-.quiz-question {
+#screen-quiz .quiz-question {
   font-size: clamp(1.1rem, 3vw, 1.35rem);
   font-weight: 700;
   font-family: 'Playfair Display', serif;
-  color: var(--text);
+  color: #1A1A1A;
   margin-bottom: 28px;
   line-height: 1.5;
   min-height: 64px;
@@ -318,12 +327,12 @@ select option { background: var(--card); color: var(--text); }
   gap: 12px;
 }
 
-.choice-btn {
+#screen-quiz .choice-btn {
   padding: 16px 14px;
-  background: var(--card-light);
-  border: 1.5px solid var(--border);
+  background: rgba(255,255,255,0.5);
+  border: 1.5px solid rgba(26,26,26,0.15);
   border-radius: var(--radius-sm);
-  color: var(--text);
+  color: #1A1A1A;
   font-family: 'Raleway', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
@@ -334,33 +343,32 @@ select option { background: var(--card); color: var(--text); }
   position: relative;
   overflow: hidden;
 }
-.choice-btn:hover:not(:disabled) {
-  border-color: var(--salmon);
-  background: rgba(224,122,95,0.08);
+#screen-quiz .choice-btn:hover:not(:disabled) {
+  border-color: #1A1A1A;
+  background: rgba(255,255,255,0.8);
   transform: translateY(-1px);
 }
 .choice-btn.correct {
-  border-color: #27AE60;
-  background: rgba(39,174,96,0.15);
-  color: #2ECC71;
+  border-color: #1B5E20;
+  background: rgba(27,94,32,0.2);
+  color: #1B5E20;
 }
 .choice-btn.wrong {
-  border-color: #E74C3C;
-  background: rgba(231,76,60,0.12);
-  color: #E74C3C;
+  border-color: #B71C1C;
+  background: rgba(183,28,28,0.15);
+  color: #B71C1C;
 }
 .choice-btn:disabled { cursor: default; }
 
-/* Lettre A/B/C/D */
-.choice-letter {
+#screen-quiz .choice-letter {
   display: inline-block;
   width: 24px;
   height: 24px;
   line-height: 24px;
   text-align: center;
   border-radius: 50%;
-  background: rgba(224,122,95,0.15);
-  color: var(--salmon);
+  background: rgba(26,26,26,0.15);
+  color: #1A1A1A;
   font-size: 0.75rem;
   font-weight: 800;
   margin-right: 8px;
