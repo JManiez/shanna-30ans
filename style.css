@@ -269,13 +269,20 @@ select option { background: var(--card); color: var(--text); }
 }
 
 /* ---------- ÉCRAN QCM : fond saumon + texte sombre ---------- */
+#app:has(#screen-quiz:not(.hidden)) {
+  background: linear-gradient(180deg, #E07A5F 0%, #E9967A 35%, #F0B090 100%) !important;
+  background-image: none !important;
+}
+body:has(#screen-quiz:not(.hidden)) .stars {
+  display: none;
+}
 #screen-quiz .card {
-  background: linear-gradient(160deg, #E07A5F 0%, #E9967A 50%, #F0B090 100%);
-  border-color: rgba(255,255,255,0.3);
-  box-shadow: 0 20px 60px rgba(224,122,95,0.4);
+  background: linear-gradient(160deg, #E07A5F 0%, #E9967A 50%, #F0B090 100%) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+  box-shadow: 0 20px 60px rgba(224,122,95,0.5);
 }
 #screen-quiz .card::before {
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
 }
 
 #screen-quiz .quiz-header {
