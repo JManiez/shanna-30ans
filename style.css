@@ -1,31 +1,32 @@
 /* ============================================================
-   SHANNA 30 ANS - Thème festif : noir, doré, rose poudré
+   SHANNA 30 ANS - Thème : brosse de saumon + sage
    Google Fonts : Playfair Display (titres) + Raleway (corps)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;500;600;700&display=swap');
 
-/* ---------- Variables ---------- */
+/* ---------- Variables : Saumon + Sage (couleur déclinée) ---------- */
 :root {
-  --gold:        #D4AF37;
-  --gold-light:  #F0D060;
-  --gold-dark:   #A07820;
-  --silver:      #C0C0C0;
-  --red-team:    #C0392B;
-  --rose:        #C9727A;
-  --rose-light:  #F2B5BB;
-  --black:       #0D0D0D;
-  --dark:        #1A1A2E;
-  --card:        #16213E;
-  --card-light:  #1E2B4A;
-  --text:        #F5F0E8;
-  --text-muted:  #A89F94;
-  --border:      rgba(212, 175, 55, 0.25);
-  --shadow:      rgba(0, 0, 0, 0.6);
+  --salmon:       #E07A5F;
+  --salmon-light: #F4A582;
+  --salmon-dark:  #C06A4B;
+  --sage:         #7BAFAE;
+  --sage-light:   #9BC4C3;
+  --sage-dark:    #5C8A8A;
+  --silver:       #B8C4C4;
+  --red-team:     #C0392B;
+  --black:        #0D0D0D;
+  --dark:         #1A2424;
+  --card:         #1E2E2E;
+  --card-light:   #263838;
+  --text:         #F5F0E8;
+  --text-muted:   #9CA8A8;
+  --border:       rgba(224, 122, 95, 0.25);
+  --shadow:       rgba(0, 0, 0, 0.5);
 
-  --radius:      16px;
-  --radius-sm:   8px;
-  --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius:       16px;
+  --radius-sm:    8px;
+  --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Reset & Base ---------- */
@@ -40,8 +41,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    radial-gradient(ellipse at 20% 10%, rgba(212,175,55,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(201,114,122,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 10%, rgba(224,122,95,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(123,175,174,0.08) 0%, transparent 50%);
 }
 
 /* ---------- Typographie ---------- */
@@ -53,8 +54,8 @@ h1, h2, h3 {
 /* ---------- Utilitaires ---------- */
 .hidden { display: none !important; }
 
-.text-gold   { color: var(--gold); }
-.text-rose   { color: var(--rose); }
+.text-salmon { color: var(--salmon); }
+.text-sage   { color: var(--sage); }
 .text-muted  { color: var(--text-muted); }
 
 /* ---------- Étoiles de fond animées ---------- */
@@ -68,7 +69,7 @@ h1, h2, h3 {
 .star {
   position: absolute;
   width: 2px; height: 2px;
-  background: var(--gold-light);
+  background: var(--salmon-light);
   border-radius: 50%;
   animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
   opacity: 0;
@@ -114,15 +115,15 @@ h1, h2, h3 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(212,175,55,0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(224,122,95,0.05) 0%, transparent 60%);
   pointer-events: none;
 }
 
-/* ---------- Séparateur doré ---------- */
+/* ---------- Séparateur saumon ---------- */
 .gold-line {
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--salmon), transparent);
   margin: 16px auto;
 }
 
@@ -156,22 +157,22 @@ h1, h2, h3 {
 .btn:active::after { opacity: 1; }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: var(--black);
-  box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+  background: linear-gradient(135deg, var(--salmon), var(--salmon-dark));
+  color: white;
+  box-shadow: 0 4px 20px rgba(224,122,95,0.4);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(212,175,55,0.6);
+  box-shadow: 0 8px 30px rgba(224,122,95,0.6);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--gold);
-  border: 2px solid var(--gold);
+  color: var(--salmon);
+  border: 2px solid var(--salmon);
 }
 .btn-secondary:hover {
-  background: rgba(212,175,55,0.1);
+  background: rgba(224,122,95,0.1);
   transform: translateY(-2px);
 }
 
@@ -184,14 +185,14 @@ h1, h2, h3 {
 .welcome-title {
   font-size: clamp(2rem, 6vw, 3.2rem);
   font-weight: 900;
-  color: var(--gold);
-  text-shadow: 0 0 40px rgba(212,175,55,0.4);
+  color: var(--salmon);
+  text-shadow: 0 0 40px rgba(224,122,95,0.4);
   margin-bottom: 8px;
 }
 .welcome-subtitle {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   font-style: italic;
-  color: var(--rose-light);
+  color: var(--sage-light);
   margin-bottom: 24px;
 }
 .welcome-desc {
@@ -218,14 +219,14 @@ h1, h2, h3 {
   letter-spacing: 0.05em;
   border: 1.5px solid;
 }
-.badge-gold   { color: var(--gold);    border-color: var(--gold);    background: rgba(212,175,55,0.08); }
-.badge-silver { color: var(--silver);  border-color: var(--silver);  background: rgba(192,192,192,0.08); }
-.badge-red    { color: #E74C3C;        border-color: #E74C3C;        background: rgba(231,76,60,0.08); }
+.badge-gold   { color: var(--salmon);  border-color: var(--salmon);  background: rgba(224,122,95,0.12); }
+.badge-silver { color: var(--sage);    border-color: var(--sage);    background: rgba(123,175,174,0.12); }
+.badge-red    { color: #E74C3C;       border-color: #E74C3C;        background: rgba(231,76,60,0.08); }
 
 /* ---------- ÉCRAN INSCRIPTION ---------- */
 #screen-register .card-title {
   font-size: 1.8rem;
-  color: var(--gold);
+  color: var(--salmon);
   text-align: center;
   margin-bottom: 6px;
 }
@@ -255,8 +256,8 @@ input[type="text"], select {
   -webkit-appearance: none;
 }
 input[type="text"]:focus, select:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+  border-color: var(--salmon);
+  box-shadow: 0 0 0 3px rgba(224,122,95,0.15);
 }
 input::placeholder { color: var(--text-muted); }
 select option { background: var(--card); color: var(--text); }
@@ -282,7 +283,7 @@ select option { background: var(--card); color: var(--text); }
 }
 .quiz-name {
   font-size: 0.9rem;
-  color: var(--gold);
+  color: var(--salmon);
   font-weight: 700;
 }
 
@@ -296,7 +297,7 @@ select option { background: var(--card); color: var(--text); }
 }
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--rose));
+  background: linear-gradient(90deg, var(--salmon), var(--sage));
   border-radius: 2px;
   transition: width 0.4s ease;
 }
@@ -334,8 +335,8 @@ select option { background: var(--card); color: var(--text); }
   overflow: hidden;
 }
 .choice-btn:hover:not(:disabled) {
-  border-color: var(--gold);
-  background: rgba(212,175,55,0.08);
+  border-color: var(--salmon);
+  background: rgba(224,122,95,0.08);
   transform: translateY(-1px);
 }
 .choice-btn.correct {
@@ -358,8 +359,8 @@ select option { background: var(--card); color: var(--text); }
   line-height: 24px;
   text-align: center;
   border-radius: 50%;
-  background: rgba(212,175,55,0.15);
-  color: var(--gold);
+  background: rgba(224,122,95,0.15);
+  color: var(--salmon);
   font-size: 0.75rem;
   font-weight: 800;
   margin-right: 8px;
@@ -379,25 +380,25 @@ select option { background: var(--card); color: var(--text); }
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  border: 3px solid var(--gold);
+  border: 3px solid var(--salmon);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background: rgba(212,175,55,0.08);
-  box-shadow: 0 0 40px rgba(212,175,55,0.3);
+  background: rgba(224,122,95,0.08);
+  box-shadow: 0 0 40px rgba(224,122,95,0.3);
   animation: pulse-glow 2s ease infinite;
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-  50%       { box-shadow: 0 0 60px rgba(212,175,55,0.6); }
+  0%, 100% { box-shadow: 0 0 30px rgba(224,122,95,0.3); }
+  50%       { box-shadow: 0 0 60px rgba(224,122,95,0.5); }
 }
 .score-number {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   font-weight: 900;
-  color: var(--gold);
+  color: var(--salmon);
   line-height: 1;
 }
 .score-total {
@@ -412,8 +413,8 @@ select option { background: var(--card); color: var(--text); }
   font-family: 'Playfair Display', serif;
   margin: 16px 0 8px;
 }
-.team-gold   { color: var(--gold); }
-.team-silver { color: var(--silver); }
+.team-gold   { color: var(--salmon); }
+.team-silver { color: var(--sage); }
 .team-red    { color: #E74C3C; }
 
 .result-ribbon {
@@ -492,8 +493,8 @@ select option { background: var(--card); color: var(--text); }
   min-height: 100vh;
   padding: 24px;
   background-image:
-    radial-gradient(ellipse at 20% 10%, rgba(212,175,55,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(201,114,122,0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 10%, rgba(224,122,95,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(123,175,174,0.06) 0%, transparent 50%);
 }
 
 .admin-header {
@@ -507,7 +508,7 @@ select option { background: var(--card); color: var(--text); }
 .admin-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.4rem, 4vw, 2rem);
-  color: var(--gold);
+  color: var(--salmon);
 }
 .admin-subtitle {
   font-size: 0.85rem;
@@ -545,7 +546,7 @@ select option { background: var(--card); color: var(--text); }
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   font-weight: 900;
-  color: var(--gold);
+  color: var(--salmon);
   line-height: 1;
 }
 .stat-label {
@@ -578,7 +579,7 @@ select option { background: var(--card); color: var(--text); }
 }
 .progress-global-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--rose));
+  background: linear-gradient(90deg, var(--salmon), var(--sage));
   border-radius: 6px;
   transition: width 0.6s ease;
 }

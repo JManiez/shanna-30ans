@@ -68,8 +68,8 @@ const TEAMS = [
     emoji: "👑",
     minScore: 8,
     maxScore: 10,
-    ribbon: "Ruban DORÉ",
-    ribbonColor: "#D4AF37",
+    ribbon: "Ruban SAUMON",
+    ribbonColor: "#E07A5F",
     description: "Tu connais Shanna mieux qu'elle-même !",
     bgClass: "team-gold"
   },
@@ -78,8 +78,8 @@ const TEAMS = [
     emoji: "🎯",
     minScore: 4,
     maxScore: 7,
-    ribbon: "Ruban ARGENTÉ",
-    ribbonColor: "#C0C0C0",
+    ribbon: "Ruban SAGE",
+    ribbonColor: "#7BAFAE",
     description: "Tu la connais bien… mais il reste des secrets !",
     bgClass: "team-silver"
   },
